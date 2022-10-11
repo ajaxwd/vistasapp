@@ -11,4 +11,7 @@ export const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
+  containerList: {
+    flex: 1,
+  },
 });
