@@ -1,4 +1,5 @@
 import React from "react";
+import { getCategories } from "../../db";
 import { View, Button, Image, FlatList } from "react-native";
 import { styles } from "./style";
 import { CardButton, CategoryItem, Title } from "../../components";
@@ -7,8 +8,10 @@ import { selectCategory } from "../../store/actions";
 
 const Categories = ({ navigation }) => {
   const dispatch = useDispatch();
-  const categories = useSelector((state) => state.category.categories);
+  //const categories = useSelector((state) => state.category.categories);
+  const categories = getCategories();
 
+  console.log(categories);
   const onSelected = (item) => {
     dispatch(selectCategory(item.id));
     navigation.navigate("Products", { name: item.title });

@@ -1,4 +1,5 @@
 import React from "react";
+import { init } from "./src/db";
 import { ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
 import AppNavigator from "./src/navigation";
@@ -15,6 +16,14 @@ export default function App() {
   if (!loaded) {
     return <ActivityIndicator />;
   }
+
+  init()
+    .then(() => {
+      console.log("Initialized database");
+    })
+    .catch((err) => {
+      console.log("Initializing db failed.", err);
+    });
 
   return (
     <Provider store={store}>
